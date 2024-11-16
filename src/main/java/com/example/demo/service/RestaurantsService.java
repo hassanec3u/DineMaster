@@ -1,4 +1,3 @@
-
 package com.example.demo.service;
 
 import com.example.demo.entity.RestaurantEntity;
@@ -12,11 +11,6 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class RestaurantsService {
-
-    //- La possibilité de récupérer tous les restaurants\*
-    //- La possibilité de récupérer un restaurant en particulier\*
-    //- La possibilité de créer un restaurant\*
-    //- La possibilité de mettre à jour le nom et l'adresse d'un restaurant
 
     private final RestaurantRepository restaurantRepository;
     private final IndexService indexService;

@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.Random;
 
 
 @Entity(name = "Restaurant")
@@ -16,14 +17,6 @@ import java.util.List;
 @Data
 public class RestaurantEntity {
 
-
-    //Un **restaurant** est caractérisé par :
-    //
-    //- un identifiant unique (un nombre entier positif)
-    //- Un nom (longueur max de 90 caractères)
-    //- Une adresse (longueur max de 255 caractères)
-    //- Une liste d'**évaluations**
-    //- une image présentant le restaurant
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,9 +32,11 @@ public class RestaurantEntity {
     @Column(name = "image")
     private String image;
 
+
     @OneToMany(mappedBy = "restaurant", fetch = FetchType.EAGER)
     private List<EvaluationEntity> evaluationEntity;
 
-
+    @Column(name = "moyenne", nullable = false)
+    private double moyenne = -1;
 
 }

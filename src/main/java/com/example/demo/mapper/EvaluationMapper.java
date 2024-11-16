@@ -2,6 +2,7 @@ package com.example.demo.mapper;
 
 import com.example.demo.dto.EvaluationDto;
 import com.example.demo.entity.EvaluationEntity;
+import com.example.demo.entity.RestaurantEntity;
 
 public class EvaluationMapper {
 
@@ -10,6 +11,7 @@ public class EvaluationMapper {
         return EvaluationDto.builder()
                 .auteur(evaluationEntity.getAuteur())
                 .note(evaluationEntity.getNote())
+                .RestauId(evaluationEntity.getRestaurant().getId())
                 .commentaire(evaluationEntity.getCommentaire())
                 .build();
     }
@@ -22,5 +24,4 @@ public class EvaluationMapper {
                 .commentaire(evaluationDto.getCommentaire())
                 .build();
     }
-
 }

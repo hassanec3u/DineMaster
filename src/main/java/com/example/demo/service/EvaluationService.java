@@ -1,8 +1,10 @@
 package com.example.demo.service;
 
+import com.example.demo.dto.EvaluationDto;
 import com.example.demo.entity.EvaluationEntity;
 import com.example.demo.entity.RestaurantEntity;
 import com.example.demo.exception.NotFoundException;
+import com.example.demo.mapper.EvaluationMapper;
 import com.example.demo.repository.EvaluationRepository;
 import com.example.demo.repository.RestaurantRepository;
 import lombok.RequiredArgsConstructor;
@@ -26,17 +28,41 @@ public class EvaluationService {
 
 
     //ajouter une évaluation sur un un restaurant
-    public void addEvaluationToRestaurant(Long restaurantID, String auteur, String commentaire, int note) {
-        RestaurantEntity restaurantEntity = restaurantRepository.findById(restaurantID).orElseThrow(() -> new NotFoundException("restaurant with id " + restaurantID + " not found"));
-        EvaluationEntity evaluation = EvaluationEntity.builder()
-                .auteur(auteur)
-                .commentaire(commentaire)
-                .note(note)
-                .restaurant(restaurantEntity)
-                .build();
+    public void addEvaluationToRestaurant(EvaluationDto evaluationDto) {
+        RestaurantEntity restaurantEntity = restaurantRepository.findById(evaluationDto.getRestauId()).orElseThrow(() -> new NotFoundException("restaurant with id " + evaluationDto.getRestauId() + " not found"));
 
+        EvaluationEntity evaluation =   EvaluationMapper.mapDtoToEntity(evaluationDto);
+        evaluation.setRestaurant(restaurantEntity);
+
+        //calcul la moyenne des notes du restaurant
+        double moyenne = evaluationDto.getNote();
+        for (EvaluationEntity e : evaluationRepository.findAll()) {
+            if (e.getRestaurant().getId() == evaluationDto.getRestauId()) {
+                moyenne += e.getNote();
+            }
+        }
+        moyenne = moyenne / (evaluationRepository.findAll().size()+1);
+
+        //troncature à 2 chiffres après la virgule
+        moyenne = Math.round(moyenne * 100.0) / 100.0;
+
+        restaurantEntity.setMoyenne(moyenne);
+
+
+        restaurantRepository.save(restaurantEntity);
         evaluationRepository.save(evaluation);
-        indexService.indexReview(evaluation.getId(), commentaire);
+       // indexService.indexReview(evaluation.getId(), commentaire);
+    }
+
+    //récupérer les évaluations en fonction de l'id d'un restaurant
+    public List<EvaluationEntity> getEvaluationsByRestaurantId(Long RestaurantId) {
+        List<EvaluationEntity> evaluations = new ArrayList<>();
+        for (EvaluationEntity evaluation : evaluationRepository.findAll()) {
+            if (evaluation.getRestaurant().getId() == RestaurantId) {
+                evaluations.add(evaluation);
+            }
+        }
+        return evaluations;
     }
 
     //supprimer une évaluation

@@ -22,12 +22,13 @@ public class RestaurantDto {
     @Size(max = 90, message = "Le nom du restaurant ne doit pas dépasser 90 caractères")
     private String nom;
 
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private double moyenne;
 
     @NotBlank(message = "L'adresse du restaurant est obligatoire")
     @Size(max = 255, message = "L'adresse du restaurant ne doit pas dépasser 255 caractères")
     private String adresse;
 
-    @NotBlank(message = "L'image du restaurant est obligatoire")
     private String image;
 
     @JsonProperty("evaluationIds")

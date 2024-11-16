@@ -12,14 +12,6 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity(name = "Evaluation")
 public class EvaluationEntity {
-
-    //- un identifiant unique (un nombre entier positif)
-    //- Le nom de l'évaluateur (longueur max de 50 caractères)
-    //- Le commentaire (longueur max de 255 caractères)
-    //- Le nombre d'étoiles recommandé (0,1,2 ou 3) appellée "note"
-
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -42,9 +34,8 @@ public class EvaluationEntity {
     @JoinColumn(name = "restaurant_id")
     private RestaurantEntity restaurant;
 
+
+
     public void sePlatImage(String str) {
     }
-
-
-
 }

@@ -12,6 +12,8 @@ import lombok.Value;
 @AllArgsConstructor
 public class EvaluationDto {
 
+    @NotBlank(message = "L'id de l'évaluation est obligatoire")
+    private Long RestauId;
 
     @NotBlank(message = "Le nom de l'auteur est obligatoire")
     private String auteur;

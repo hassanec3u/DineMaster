@@ -89,41 +89,5 @@ public class TestService {
         assertEquals("Title Test Restaurant", result);
         verify(restaurantRepository, times(1)).findById(anyLong());
     }
-
-    /* void testUpdateBook_Ok() {
-        var oldTitle = "Lean Startup";
-        var newTitle = "Personal MBA";
-
-        var bookInDB = BookEntity.builder().title(oldTitle).isbn(123456789L).build();
-
-        when(bookRepository.findById(any())).thenReturn(Optional.of(bookInDB));
-        when(bookRepository.save(any())).thenReturn(bookInDB);
-
-        var result = bookService.updateBook(123123L, newTitle);
-
-        assertEquals(newTitle, result.getTitle());
-        verify(bookRepository, times(1)).save(any());
-    }
-
-        @Test()
-    void testUpdateBook_title_too_long() {
-        var newTitle = "VERY VERY VERY VERY VERY VERY VERY VERY VERY VERY VERY VERY VERY VERY VERY VERY VERY VERY VERY VERY LONG TILTE";
-        assertThrows(BusinessException.class, () -> bookService.updateBook(123123L, newTitle));
-    }
-
-    @Test()
-    void testUpdateBook_title_is_blank() {
-        String newTitle = null;
-        assertThrows(BusinessException.class, () -> bookService.updateBook(123123L, newTitle));
-    }
-
-    @Test()
-    void testUpdateBook_book_is_not_found() {
-        var newTitle = "Personal MBA";
-
-        when(bookRepository.findById(any())).thenReturn(Optional.empty());
-
-        assertThrows(NotFoundException.class, () -> bookService.updateBook(123123L, newTitle));
-    }
-    */
+    
 }

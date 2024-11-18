@@ -37,10 +37,10 @@ public class EvaluationController{
                 .collect(Collectors.toList());
     }
 
-    //recupere les id des évaluations en fonction d'un mot clé avec l'indexation lucene
+   /* //recupere les id des évaluations en fonction d'un mot clé avec l'indexation lucene
     @GetMapping("/search")
     public List<String> getEvaluationByDescriptionIndexing(@RequestParam String keyword) {
         return evaluationService.getEvaluationsByKeyword( keyword);
     }
-
+*/
 }

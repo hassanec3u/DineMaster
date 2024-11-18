@@ -13,7 +13,7 @@ import java.util.List;
 public class RestaurantsService {
 
     private final RestaurantRepository restaurantRepository;
-    private final IndexService indexService;
+    //private final IndexService indexService;
     private final S3ServiceRestaurant s3ServiceRestaurant;
 
     public void addRestaurant(String nom, String adresse, String image) {
@@ -54,4 +54,9 @@ public class RestaurantsService {
         return s3ServiceRestaurant.getUrlGetCoverByIDForRestaurant(restaurant.getId());
     }
 
+    public void deleteRestaurant(Long id) {
+        var restaurant = restaurantRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Restaurant with id " + id + " not found"));
+        restaurantRepository.delete(restaurant);
+    }
 }

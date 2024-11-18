@@ -43,17 +43,31 @@ public class RestaurantControler {
     }
 
 
-    //recuper l'url du cover de l'image d'un restaurant a uploader
-    @GetMapping("/{id}/cover/urlToUpload")
-    public String getCoverById(@PathVariable Long id) {
-        return restaurantsService.getCoverByIdToUpload(id);
-    }
 
-    //Recuper l'url du cover de l'image d'un restaurant a telecharger
+    //Recuperate l'url du cover de l'image d'un restaurant a telecharger
     @GetMapping("/{id}/cover/urlToDownload")
     public String getCoverByIdToDownload(@PathVariable Long id) {
         return restaurantsService.getCoverByIdToDownload(id);
     }
+
+    //met à jour un restaurant
+    @PutMapping("/{id}")
+    public void updateRestaurant(@PathVariable Long id, @Valid @RequestBody RestaurantDto restaurantDto) {
+        restaurantsService.updateRestaurant(id, restaurantDto.getNom(), restaurantDto.getAdresse());
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteRestaurant(@PathVariable Long id) {
+        restaurantsService.deleteRestaurant(id);
+    }
+
+
+/*    //recuper l'url du cover de l'image d'un restaurant a uploader
+    @GetMapping("/{id}/cover/urlToUpload")
+    public String getCoverById(@PathVariable Long id) {
+        return restaurantsService.getCoverByIdToUpload(id);
+    }*/
+
 
 
     //recuper l'url du cover de l'image d'un plat d'un restaurant a telecharger
@@ -70,11 +84,6 @@ public class RestaurantControler {
     }
 */
 
-    //met à jour un restaurant
-    @PutMapping("/{id}")
-    public void updateRestaurant(@PathVariable Long id, @Valid @RequestBody RestaurantDto restaurantDto) {
-        restaurantsService.updateRestaurant(id, restaurantDto.getNom(), restaurantDto.getAdresse());
-    }
 
 
 }

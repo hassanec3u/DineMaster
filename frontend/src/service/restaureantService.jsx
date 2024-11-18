@@ -12,3 +12,19 @@ export const getRestaurants = async () => {
         return response.data;
     }
 }
+
+export const addRestaurant = async (newRestaurant) => {
+    const response = await RestaurantService.post('', newRestaurant);
+    if (response) {
+        console.log('restaurant ajouté:', response.data);
+        return response.data;
+    }
+}
+
+export const deleteRestaurant = async (id) => {
+    const response = await RestaurantService.delete(`/${id}`);
+    if (response) {
+        console.log('restaurant supprimé:', response.data);
+        return response.data;
+    }
+}

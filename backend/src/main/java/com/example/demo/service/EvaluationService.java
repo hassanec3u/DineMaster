@@ -21,10 +21,9 @@ public class EvaluationService {
     private final EvaluationRepository evaluationRepository;
     private final RestaurantRepository restaurantRepository;
     private final S3ServicePlat s3ServiceRestaurant;
-    private final IndexService indexService;
+    //private final IndexService indexService;
 
-    //TODO
-    //- La possibilité de récupérer les évaluations en fonction d'un (ou plusieurs) mots clefs
+
 
 
     //ajouter une évaluation sur un un restaurant
@@ -71,7 +70,7 @@ public class EvaluationService {
     }
 
 
-    //récupérer les évaluations en fonction d'un (ou plusieurs) mots clefs
+/*    //récupérer les évaluations en fonction d'un (ou plusieurs) mots clefs
     public List<String> getEvaluationsByKeyword(String keyword) {
 
         List<String> evaluationIds = indexService.searchReviewsByKeywords(keyword);
@@ -87,7 +86,7 @@ public class EvaluationService {
 
         //renvoie la liste des évaluations correspondant aux ids trouvés sous forme de Entity
         //   return evaluationRepository.findAllById(evaluationIdsLong);
-    }
+    }*/
 
     public String getCoverByIdToDownloadPlat(Long idRestau, Long idPlat) {
         var evaluation = evaluationRepository.findById(idPlat)

@@ -17,6 +17,8 @@ import java.util.List;
 @NoArgsConstructor
 public class RestaurantDto {
 
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private Long id;
 
     @NotBlank(message = "Le nom du restaurant est obligatoire")
     @Size(max = 90, message = "Le nom du restaurant ne doit pas dépasser 90 caractères")

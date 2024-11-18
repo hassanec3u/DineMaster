@@ -9,6 +9,7 @@ public class RestaurantMapper {
 
     public static RestaurantDto mapEntityToDto(RestaurantEntity restaurantEntity) {
         return RestaurantDto.builder()
+                .id(restaurantEntity.getId())
                 .nom(restaurantEntity.getNom())
                 .moyenne(restaurantEntity.getMoyenne())
                 .adresse(restaurantEntity.getAdresse())

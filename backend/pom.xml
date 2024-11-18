@@ -11,8 +11,8 @@
 	<groupId>com.example</groupId>
 	<artifactId>demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>examen</name>
-	<description>Exament de service web</description>
+	<name>DineWave</name>
+	<description>Api de Restaurant</description>
 	<url/>
 	<licenses>
 		<license/>

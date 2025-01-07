@@ -83,13 +83,10 @@ public class IndexService {
     public List<String> searchReviewsByKeywords( String keywords) {
         try {
             Query reviewQuery = reviewQueryParser.parse(keywords);
-
             TopDocs topDocs = this.indexSearcher.search(reviewQuery, 10);
-
             return Arrays.stream(topDocs.scoreDocs)
                     .map(scoreDoc -> {
                         try {
-
                             return this.indexSearcher.storedFields().document(scoreDoc.doc).getField("evaluationID").stringValue();
                         } catch (IOException e) {
                             throw new RuntimeException(e);

@@ -33,10 +33,10 @@ public class RestaurantEntity {
     private String image;
 
 
-    @OneToMany(mappedBy = "restaurant", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "restaurant", fetch = FetchType.EAGER,cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<EvaluationEntity> evaluationEntity;
 
-    @Column(name = "moyenne", nullable = false)
-    private double moyenne = -1;
+    @Column(name = "moyenne")
+    private double moyenne;
 
 }

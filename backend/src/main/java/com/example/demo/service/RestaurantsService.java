@@ -17,7 +17,7 @@ public class RestaurantsService {
     private final S3ServiceRestaurant s3ServiceRestaurant;
 
     public void addRestaurant(String nom, String adresse, String image) {
-        var restaurant = RestaurantEntity.builder().nom(nom).adresse(adresse).image(image).build();
+        var restaurant = RestaurantEntity.builder().nom(nom).adresse(adresse).image(image).moyenne(-1).build();
         this.restaurantRepository.save(restaurant);
     }
 

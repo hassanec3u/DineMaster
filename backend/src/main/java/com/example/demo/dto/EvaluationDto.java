@@ -1,5 +1,6 @@
 package com.example.demo.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -11,6 +12,10 @@ import lombok.Value;
 @Builder
 @AllArgsConstructor
 public class EvaluationDto {
+
+    //on renvoie l'id de l'évaluation
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private Long id;
 
     @NotBlank(message = "L'id de l'évaluation est obligatoire")
     private Long RestauId;

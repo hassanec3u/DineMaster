@@ -10,7 +10,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("restaurant/{id}/evaluation")
+@RequestMapping("restaurants/{id}/evaluations")
+@CrossOrigin(origins = "http://localhost:3000")
 @RequiredArgsConstructor
 public class EvaluationController{
 
@@ -37,10 +38,10 @@ public class EvaluationController{
                 .collect(Collectors.toList());
     }
 
-   /* //recupere les id des évaluations en fonction d'un mot clé avec l'indexation lucene
+    //recupere les evaluations
     @GetMapping("/search")
     public List<String> getEvaluationByDescriptionIndexing(@RequestParam String keyword) {
         return evaluationService.getEvaluationsByKeyword( keyword);
     }
-*/
+
 }

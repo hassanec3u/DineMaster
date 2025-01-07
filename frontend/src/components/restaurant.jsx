@@ -7,6 +7,7 @@ import {redirect, useNavigate} from "react-router-dom";
 
 const Restaurants = () => {
     const [showModal, setShowModal] = useState(false);
+    const navigate = useNavigate();
 
     const [newRestaurant, setNewRestaurant] = useState({nom: "", adresse: ""});
     const queryClient = useQueryClient();
@@ -35,9 +36,7 @@ const Restaurants = () => {
         deleteMutation.mutate(id);
     }
 
-    const navigate = useNavigate();
     const redirectToEvalutation = (restauId) => {
-
         navigate('/evaluations',{state: {restauId}});
     }
 
@@ -162,6 +161,7 @@ const Restaurants = () => {
         </>
     );
 };
+
 
 
 export default Restaurants;

@@ -9,6 +9,7 @@ public class EvaluationMapper {
 
     public static EvaluationDto mapEntityToDto(EvaluationEntity evaluationEntity) {
         return EvaluationDto.builder()
+                .id(evaluationEntity.getId())
                 .auteur(evaluationEntity.getAuteur())
                 .note(evaluationEntity.getNote())
                 .RestauId(evaluationEntity.getRestaurant().getId())
